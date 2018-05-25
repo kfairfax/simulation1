@@ -2,11 +2,65 @@ import React, { Component } from 'react';
 
 
 export default class Form extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      price: 0,
+      imageurl: 'default image'
+    }
+  }
+
+  handleImgUrlChange(val) {
+    this.state({ imgageurl: val });
+  }
+
+  handleNameChange(val) {
+    this.setState({ name: val });
+  };
+
+  handlePriceChange(val) {
+    this.setState({ price: val });
+  };
+
+  handleCancel() {
+    this.setState({
+      name: '',
+      price: '',
+      imageurl: 'default.jpeg'
+    });
+  };
+
+
+
+
+
   render() {
+    const { form } = this.props;
     return (
       <div>
-       <h1>Form</h1>
+        <h1>Form</h1>
+        <img style = {"width: 100px; height: 60px;"} src={this.state.imgUrl} />
+
+        <input className='imgInput' placeholder='Enter Img URL Here'
+          onChange={(e) => { this.handleImgUrlChange(e.target.value) }} />
+
+        <input className='nameInput' placeholder='Enter Product Name Here'
+          onChange={(e) => { this.handleNameChange(e.target.value) }} />
+
+        <input className='priceInput' placeholder='Enter Product Price Here'
+          onChange={(e) => (this.handlePriceChange(e.target.value))} />
+
+        <button className='addInventoryButton'
+          onClick={() => { addInventory(this.state.name, this.state.price, this.state.imageurl) }}>Add Inventory</button>
+
+        <button onClick= {()=>handleCancel()}>Cancel</button>
+
+
       </div>
     )
   }
 }
+
+
+
