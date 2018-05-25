@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/kfairfax/simulation1#readme",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
   }
 }
