@@ -18,8 +18,16 @@ app.listen(port,()=>{
 });
 
 
+app.get('/api/products', (req, res) => {
+    const db = req.app.get ('db');
+    console.log('db')
+    db.read_product().then(products=>{res.send(products)})
+  });
+  
 
-// app.post( '/api/products', controller.create);
-// app.get( '/api/products' , controller.getOne);
-// app.put( '/api/products/:id', controller.update );
-// app.delete( '/api/products/:id', controller.delete);
+//   create: (req, res) => {
+//     const { name, price } = req.body;
+//     gifts.push({ id, name, price });
+//     id++;
+//     res.status(200).send(gifts)
+  

@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 
-
 export default class Form extends Component {
   constructor() {
     super();
     this.state = {
       name: '',
       price: 0,
-      imageurl: 'default image'
+      imageurl: ''
     }
   }
 
   handleImgUrlChange(val) {
-    this.state({ imgageurl: val });
+    this.setState({ imgageurl: val });
   }
 
   handleNameChange(val) {
@@ -27,7 +26,7 @@ export default class Form extends Component {
     this.setState({
       name: '',
       price: '',
-      imageurl: 'default.jpeg'
+      imageurl: './default.png'
     });
   };
 
@@ -36,11 +35,11 @@ export default class Form extends Component {
 
 
   render() {
-    const { form } = this.props;
+    const { addInventory } = this.props;
     return (
       <div>
         <h1>Form</h1>
-        <img style = {"width: 100px; height: 60px;"} src={this.state.imgUrl} />
+        <img src={this.state.imageurl} />
 
         <input className='imgInput' placeholder='Enter Img URL Here'
           onChange={(e) => { this.handleImgUrlChange(e.target.value) }} />
@@ -53,8 +52,8 @@ export default class Form extends Component {
 
         <button className='addInventoryButton'
           onClick={() => { addInventory(this.state.name, this.state.price, this.state.imageurl) }}>Add Inventory</button>
-
-        <button onClick= {()=>handleCancel()}>Cancel</button>
+ 
+        <button onClick= {()=>this.handleCancel()}>Cancel</button>
 
 
       </div>
